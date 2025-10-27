@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Gameplay Messaging System Documentation',
   tagline: 'Gameplay Messaging System Documentation',
-  url: 'https://gameplaymessaging.eeldev.com',
+  url: 'https://gameplaymessaging.eeldev.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
