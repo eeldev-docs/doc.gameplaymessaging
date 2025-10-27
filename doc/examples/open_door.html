@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
-<title data-rh="true">Opening a Door (Trigger) | Gameplay Messaging System Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://gameplaymessaging.eeldev.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://gameplaymessaging.eeldev.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://gameplaymessaging.eeldev.com/doc/examples/open_door"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Opening a Door (Trigger) | Gameplay Messaging System Documentation"><meta data-rh="true" name="description" content="In this example we&#x27;ll take a look at how we can trigger opening and closing a door using gameplay events."><meta data-rh="true" property="og:description" content="In this example we&#x27;ll take a look at how we can trigger opening and closing a door using gameplay events."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://gameplaymessaging.eeldev.com/doc/examples/open_door"><link data-rh="true" rel="alternate" href="https://gameplaymessaging.eeldev.com/doc/examples/open_door" hreflang="en"><link data-rh="true" rel="alternate" href="https://gameplaymessaging.eeldev.com/doc/examples/open_door" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Opening a Door (Trigger)","item":"https://gameplaymessaging.eeldev.com/doc/examples/open_door"}]}</script><link rel="stylesheet" href="/assets/css/styles.ce76d8b5.css">
-<script src="/assets/js/runtime~main.918a5b8f.js" defer="defer"></script>
+<title data-rh="true">Opening a Door (Trigger) | Gameplay Messaging System Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://gameplaymessaging.eeldev.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://gameplaymessaging.eeldev.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://gameplaymessaging.eeldev.com/doc/examples/open_door"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Opening a Door (Trigger) | Gameplay Messaging System Documentation"><meta data-rh="true" name="description" content="This guide demonstrates how to use gameplay events in the Gameplay Messaging System to trigger opening and closing a door in your Unreal Engine project. We&#x27;ll create gameplay tags, define a data payload structure, set up event listeners, and implement overlap-based triggers to control the door&#x27;s behavior."><meta data-rh="true" property="og:description" content="This guide demonstrates how to use gameplay events in the Gameplay Messaging System to trigger opening and closing a door in your Unreal Engine project. We&#x27;ll create gameplay tags, define a data payload structure, set up event listeners, and implement overlap-based triggers to control the door&#x27;s behavior."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://gameplaymessaging.eeldev.com/doc/examples/open_door"><link data-rh="true" rel="alternate" href="https://gameplaymessaging.eeldev.com/doc/examples/open_door" hreflang="en"><link data-rh="true" rel="alternate" href="https://gameplaymessaging.eeldev.com/doc/examples/open_door" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Opening a Door (Trigger)","item":"https://gameplaymessaging.eeldev.com/doc/examples/open_door"}]}</script><link rel="stylesheet" href="/assets/css/styles.ce76d8b5.css">
+<script src="/assets/js/runtime~main.5e0c6671.js" defer="defer"></script>
 <script src="/assets/js/main.3d118f26.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -12,32 +12,159 @@
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
 <script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_gu5v" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Documentation</b></a><a href="https://eeldev.com" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">eeldev.com<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_T11m"><use href="#theme-svg-external-link"></use></svg></a><a href="https://www.fab.com/sellers/eelDev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">FAB Marketplace<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_T11m"><use href="#theme-svg-external-link"></use></svg></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/channel/UC6Rhr_F5BxwfTtcADVPUNYA" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">YouTube<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_T11m"><use href="#theme-svg-external-link"></use></svg></a><a href="https://discord.gg/3Yu7pEy" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Discord<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_T11m"><use href="#theme-svg-external-link"></use></svg></a><a href="https://twitter.com/dryeeldev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Twitter<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_T11m"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_kWbt colorModeToggle_GwZs"><button class="clean-btn toggleButton_fOL9 toggleButtonDisabled_STpu" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_YpC3 lightToggleIcon_DCeJ"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_YpC3 darkToggleIcon_DFgp"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_YpC3 systemToggleIcon_F0ff"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_IP3a"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_IbdI"><div class="docsWrapper_JGIH"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_SdI4" type="button"></button><div class="docRoot_eRbX"><aside class="theme-doc-sidebar-container docSidebarContainer_Ta75"><div class="sidebarViewport_fgog"><div class="sidebar_oDHW"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_vPEQ"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/">Gameplay Messaging System Documentation</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/purchase-plugin">Purchase Plugin</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/example-project">Example Project</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a href="http://eeldev.com/" target="_blank" rel="noopener noreferrer" class="menu__link menuExternalLink_iv3S">eeldev.com<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_T11m"><use href="#theme-svg-external-link"></use></svg></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menuHtmlItem_DqR3 menu__list-item">Gameplay Messaging System</li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/doc/getting-started/introduction">Installing</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/doc/examples/open_door">Blueprint Examples</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/doc/examples/open_door">Opening a Door (Trigger)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/examples/open_door_button">Opening a Door (Button)</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/logging">Configuring Logging</a></li></ul></nav></div></div></aside><main class="docMainContainer_lg0V"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_nDJs"><div class="docItemContainer_OGiL"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_k3Z9" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_JACu"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Blueprint Examples</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Opening a Door (Trigger)</span></li></ul></nav><div class="tocCollapsible_QCOD theme-doc-toc-mobile tocMobile_N0YI"><button type="button" class="clean-btn tocCollapsibleButton_pHwF">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Opening a Door (Trigger)</h1></header>
-<p>In this example we&#x27;ll take a look at how we can trigger opening and closing a door using gameplay events.</p>
-<h2 class="anchor anchorWithStickyNavbar_FNw8" id="create-the-tags">Create the tags<a href="#create-the-tags" class="hash-link" aria-label="Direct link to Create the tags" title="Direct link to Create the tags">​</a></h2>
-<p>Start by creating gameplay tags for the event</p>
-<p>Navigate to Project Settings &gt; GameplayTags
-<img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_tags-9ce6db969a44f344984ac0265f0561c5.png" width="2347" height="778" class="img_wQsy"></p>
-<p>Add a new tag called &quot;Gameplay.Trigger.Door&quot;, this tag can be whatever you like, but keeping it descriptive will help stay organized when you have a lot of tags.
-<img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_tags_2-23c1a1410ebdc456f8bb60a2863bcdc3.png" width="1016" height="783" class="img_wQsy"></p>
-<h2 class="anchor anchorWithStickyNavbar_FNw8" id="creating-the-struct-for-our-payload">Creating the struct for our payload<a href="#creating-the-struct-for-our-payload" class="hash-link" aria-label="Direct link to Creating the struct for our payload" title="Direct link to Creating the struct for our payload">​</a></h2>
+<p>This guide demonstrates how to use gameplay events in the Gameplay Messaging System to trigger opening and closing a door in your Unreal Engine project. We&#x27;ll create gameplay tags, define a data payload structure, set up event listeners, and implement overlap-based triggers to control the door&#x27;s behavior.</p>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
 <ul>
-<li>Next we&#x27;re going to create a stuct to act as our &quot;payload&quot;, this will be used to send a data payload when triggering the event.</li>
+<li><strong>Unreal Engine Project</strong>: Ensure you have a project set up with the Gameplay Messaging System plugin installed and enabled (see <a href="/doc/getting-started/introduction">Installing the Plugin</a>).</li>
+<li><strong>Door Actor</strong>: A basic Door Actor with a static mesh component that can be moved or animated to represent open and closed states.</li>
+<li><strong>Basic Blueprint Knowledge</strong>: Familiarity with Unreal Engine Blueprints, including creating structs, gameplay tags, and event-driven logic.</li>
 </ul>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/create_struct-c5763e8ef6678663d36562e655640770.png" width="747" height="1028" class="img_wQsy"></p>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="step-1-create-gameplay-tags">Step 1: Create Gameplay Tags<a href="#step-1-create-gameplay-tags" class="hash-link" aria-label="Direct link to Step 1: Create Gameplay Tags" title="Direct link to Step 1: Create Gameplay Tags">​</a></h2>
+<p>Gameplay tags are used to identify and trigger specific events in the Gameplay Messaging System. We&#x27;ll create a tag to represent the door trigger event.</p>
+<ol>
+<li>
+<p><strong>Navigate to Gameplay Tags Settings</strong>:</p>
 <ul>
-<li>The struct will contain a single bool value that will determine &quot;open&quot; and &quot;closed&quot; states.</li>
+<li>Open <strong>Project Settings</strong> from the Unreal Editor&#x27;s top menu.</li>
+<li>Go to <strong>GameplayTags</strong> under the <strong>Game</strong> category.
+<img decoding="async" loading="lazy" alt="Gameplay Tags Settings" src="/assets/images/open_door_tags-9ce6db969a44f344984ac0265f0561c5.png" width="2347" height="778" class="img_wQsy"></li>
 </ul>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/struct_doorstate-632367cb2115ca0f17b65a7992b345a7.png" width="1252" height="745" class="img_wQsy"></p>
-<h2 class="anchor anchorWithStickyNavbar_FNw8" id="begin-play">Begin Play<a href="#begin-play" class="hash-link" aria-label="Direct link to Begin Play" title="Direct link to Begin Play">​</a></h2>
-<p>On begin play in our Door Actor, we will execute &quot;listen for gameplay messages&quot;, which will start to listen for events that trigger on the tag we specify. Set both the tag we created earlier as the Channel and the Payload type to the struct we created in the previous step.</p>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_begin_play-15b1d211f533be1865331855e5848bec.png" width="1477" height="393" class="img_wQsy"></p>
-<p>In this example we&#x27;re going to use simple &quot;overlap&quot; events to trigger the messages.
-OnBeginOverlap and OnEndOverlap will determine if we should open or close the door.</p>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_overlap-82e53a3953e36fd652728e6d87950478.png" width="1601" height="492" class="img_wQsy"></p>
-<p>The open and close events will simply move the doors statih mesh, very simple logic, but you get the idea.</p>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_open_close_events-7030f4ce9f7141f01ddecd3846a1ed15.png" width="1481" height="861" class="img_wQsy"></p>
-<h2 class="anchor anchorWithStickyNavbar_FNw8" id="the-result">The Result<a href="#the-result" class="hash-link" aria-label="Direct link to The Result" title="Direct link to The Result">​</a></h2>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_closed-9040a6056b378a3ce1bdd8eddfa04d86.png" width="1285" height="772" class="img_wQsy"></p>
-<p><img decoding="async" loading="lazy" alt="Image" src="/assets/images/open_door_open-6285d4139f844a0bd3d6697edd538481.png" width="1285" height="765" class="img_wQsy"></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/doc/examples/open_door.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_NulP" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ZfWH"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/doc/getting-started/using"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Using the Gameplay Messaging System Plugin</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/doc/examples/open_door_button"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Opening a Door (Button)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_IS5x thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#create-the-tags" class="table-of-contents__link toc-highlight">Create the tags</a></li><li><a href="#creating-the-struct-for-our-payload" class="table-of-contents__link toc-highlight">Creating the struct for our payload</a></li><li><a href="#begin-play" class="table-of-contents__link toc-highlight">Begin Play</a></li><li><a href="#the-result" class="table-of-contents__link toc-highlight">The Result</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 eelDev AB</div></div></div></footer></div>
+</li>
+<li>
+<p><strong>Add a New Tag</strong>:</p>
+<ul>
+<li>Click <strong>Add New Tag</strong> or the <strong>+</strong> button in the Gameplay Tags section.</li>
+<li>Create a new tag named <code>Gameplay.Trigger.Door</code>.</li>
+<li><strong>Tip</strong>: Use a descriptive name to keep your tags organized, especially in projects with many tags.
+<img decoding="async" loading="lazy" alt="New Gameplay Tag" src="/assets/images/open_door_tags_2-23c1a1410ebdc456f8bb60a2863bcdc3.png" width="1016" height="783" class="img_wQsy"></li>
+</ul>
+</li>
+<li>
+<p><strong>Save Changes</strong>:</p>
+<ul>
+<li>Ensure the tag is saved in the Gameplay Tags list. This tag will be used as the channel for triggering door events.</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="step-2-create-a-payload-struct">Step 2: Create a Payload Struct<a href="#step-2-create-a-payload-struct" class="hash-link" aria-label="Direct link to Step 2: Create a Payload Struct" title="Direct link to Step 2: Create a Payload Struct">​</a></h2>
+<p>To send data with the gameplay event (e.g., whether the door should open or close), we&#x27;ll create a struct to act as the payload.</p>
+<ol>
+<li>
+<p><strong>Create a New Struct</strong>:</p>
+<ul>
+<li>In the <strong>Content Browser</strong>, right-click and select <strong>Blueprint</strong> &gt; <strong>Structure</strong> to create a new struct.</li>
+<li>Name the struct something descriptive, like <code>DoorStatePayload</code>.
+<img decoding="async" loading="lazy" alt="Create Struct" src="/assets/images/create_struct-c5763e8ef6678663d36562e655640770.png" width="747" height="1028" class="img_wQsy"></li>
+</ul>
+</li>
+<li>
+<p><strong>Define Struct Variables</strong>:</p>
+<ul>
+<li>Open the new struct in the Blueprint editor.</li>
+<li>Add a single <strong>Boolean</strong> variable named <code>IsOpen</code> (or similar) to indicate the door&#x27;s state (<code>true</code> for open, <code>false</code> for closed).</li>
+<li>Save and compile the struct.
+<img decoding="async" loading="lazy" alt="Struct Door State" src="/assets/images/struct_doorstate-632367cb2115ca0f17b65a7992b345a7.png" width="1252" height="745" class="img_wQsy"></li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="step-3-set-up-the-door-actor">Step 3: Set Up the Door Actor<a href="#step-3-set-up-the-door-actor" class="hash-link" aria-label="Direct link to Step 3: Set Up the Door Actor" title="Direct link to Step 3: Set Up the Door Actor">​</a></h2>
+<p>The Door Actor will listen for gameplay messages and respond to overlap events to trigger the open/close behavior.</p>
+<ol>
+<li>
+<p><strong>Configure BeginPlay</strong>:</p>
+<ul>
+<li>Open your Door Actor&#x27;s Blueprint.</li>
+<li>In the <strong>Event BeginPlay</strong> node, add a <strong>Listen for Gameplay Messages</strong> node.</li>
+<li>Set the following parameters:<!-- -->
+<ul>
+<li><strong>Channel</strong>: Set to the <code>Gameplay.Trigger.Door</code> tag created earlier.</li>
+<li><strong>Payload Type</strong>: Select the <code>DoorStatePayload</code> struct.</li>
+</ul>
+</li>
+<li>This node will make the Door Actor listen for events triggered on the specified tag and process the associated payload.
+<img decoding="async" loading="lazy" alt="BeginPlay Setup" src="/assets/images/open_door_begin_play-15b1d211f533be1865331855e5848bec.png" width="1477" height="393" class="img_wQsy"></li>
+</ul>
+</li>
+<li>
+<p><strong>Implement Overlap Events</strong>:</p>
+<ul>
+<li>Use <strong>OnComponentBeginOverlap</strong> and <strong>OnComponentEndOverlap</strong> events on the Door Actor’s collision component (e.g., a Box or Sphere component) to detect when an actor (like the player) enters or exits the trigger area.</li>
+<li>In <strong>OnComponentBeginOverlap</strong>:<!-- -->
+<ul>
+<li>Create a <strong>Send Gameplay Message</strong> node.</li>
+<li>Set the <strong>Channel</strong> to <code>Gameplay.Trigger.Door</code>.</li>
+<li>Create a new instance of the <code>DoorStatePayload</code> struct and set <code>IsOpen</code> to <code>true</code>.</li>
+</ul>
+</li>
+<li>In <strong>OnComponentEndOverlap</strong>:<!-- -->
+<ul>
+<li>Create another <strong>Send Gameplay Message</strong> node.</li>
+<li>Set the <strong>Channel</strong> to <code>Gameplay.Trigger.Door</code>.</li>
+<li>Create a new instance of the <code>DoorStatePayload</code> struct and set <code>IsOpen</code> to <code>false</code>.
+<img decoding="async" loading="lazy" alt="Overlap Events" src="/assets/images/open_door_overlap-82e53a3953e36fd652728e6d87950478.png" width="1601" height="492" class="img_wQsy"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Handle Open/Close Logic</strong>:</p>
+<ul>
+<li>When the <strong>Listen for Gameplay Messages</strong> node receives a message, it outputs the payload (<code>DoorStatePayload</code>).</li>
+<li>Use the <code>IsOpen</code> boolean from the payload to determine the door’s behavior:<!-- -->
+<ul>
+<li>If <code>IsOpen</code> is <code>true</code>, move or animate the door’s static mesh to the <strong>open</strong> position.</li>
+<li>If <code>IsOpen</code> is <code>false</code>, move or animate the door’s static mesh to the <strong>closed</strong> position.</li>
+</ul>
+</li>
+<li>Example: Use a <strong>Set Relative Location</strong> or <strong>Add Relative Rotation</strong> node to adjust the door’s static mesh component.
+<img decoding="async" loading="lazy" alt="Open/Close Events" src="/assets/images/open_door_open_close_events-7030f4ce9f7141f01ddecd3846a1ed15.png" width="1481" height="861" class="img_wQsy"></li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="step-4-test-the-setup">Step 4: Test the Setup<a href="#step-4-test-the-setup" class="hash-link" aria-label="Direct link to Step 4: Test the Setup" title="Direct link to Step 4: Test the Setup">​</a></h2>
+<ol>
+<li><strong>Place the Door Actor</strong>:<!-- -->
+<ul>
+<li>Add the Door Actor to your level and ensure its collision component is set up to detect overlaps (e.g., with the player pawn).</li>
+</ul>
+</li>
+<li><strong>Playtest</strong>:<!-- -->
+<ul>
+<li>Run the game in the Unreal Editor.</li>
+<li>Walk into the door’s trigger area to trigger the <code>OnComponentBeginOverlap</code> event and open the door.</li>
+<li>Walk out of the trigger area to trigger the <code>OnComponentEndOverlap</code> event and close the door.</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="results">Results<a href="#results" class="hash-link" aria-label="Direct link to Results" title="Direct link to Results">​</a></h2>
+<ul>
+<li>
+<p><strong>Closed State</strong>: The door remains closed when no actors are overlapping the trigger area.<br>
+<img decoding="async" loading="lazy" alt="Door Closed" src="/assets/images/open_door_closed-9040a6056b378a3ce1bdd8eddfa04d86.png" width="1285" height="772" class="img_wQsy"></p>
+</li>
+<li>
+<p><strong>Open State</strong>: The door opens when an actor overlaps the trigger area.<br>
+<img decoding="async" loading="lazy" alt="Door Open" src="/assets/images/open_door_open-6285d4139f844a0bd3d6697edd538481.png" width="1285" height="765" class="img_wQsy"></p>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="additional-notes">Additional Notes<a href="#additional-notes" class="hash-link" aria-label="Direct link to Additional Notes" title="Direct link to Additional Notes">​</a></h2>
+<ul>
+<li><strong>Customization</strong>: You can expand the <code>DoorStatePayload</code> struct to include additional data, such as animation speed, sound effects, or door-specific identifiers.</li>
+<li><strong>Optimization</strong>: Ensure the collision component’s settings (e.g., Collision Presets) are configured to detect overlaps only with relevant actors (e.g., players or specific pawn types).</li>
+<li><strong>Debugging</strong>: If the door doesn’t respond as expected:<!-- -->
+<ul>
+<li>Verify the <code>Gameplay.Trigger.Door</code> tag is correctly set in both the <strong>Send Gameplay Message</strong> and <strong>Listen for Gameplay Messages</strong> nodes.</li>
+<li>Check that the payload struct is properly configured and passed.</li>
+<li>Use <strong>Print String</strong> nodes to debug the overlap events and payload values.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_FNw8" id="next-steps">Next Steps<a href="#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps">​</a></h2>
+<ul>
+<li>Explore additional gameplay messaging features, such as broadcasting messages to multiple actors or integrating with other systems (e.g., UI or audio).</li>
+<li>Refer to the Gameplay Messaging System documentation for advanced use cases, such as networked events or complex payload structures.</li>
+<li>Experiment with different door behaviors, such as timed auto-closing or locked states, by extending the payload and logic.</li>
+</ul>
+<p>For further assistance, consult the plugin’s official documentation on the Unreal Engine Marketplace or reach out to the plugin developer through support channels.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/doc/examples/open_door.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_NulP" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ZfWH"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/doc/getting-started/using"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Using the Gameplay Messaging System Plugin</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/doc/examples/open_door_button"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Opening a Door (Button)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_IS5x thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#step-1-create-gameplay-tags" class="table-of-contents__link toc-highlight">Step 1: Create Gameplay Tags</a></li><li><a href="#step-2-create-a-payload-struct" class="table-of-contents__link toc-highlight">Step 2: Create a Payload Struct</a></li><li><a href="#step-3-set-up-the-door-actor" class="table-of-contents__link toc-highlight">Step 3: Set Up the Door Actor</a></li><li><a href="#step-4-test-the-setup" class="table-of-contents__link toc-highlight">Step 4: Test the Setup</a></li><li><a href="#results" class="table-of-contents__link toc-highlight">Results</a></li><li><a href="#additional-notes" class="table-of-contents__link toc-highlight">Additional Notes</a></li><li><a href="#next-steps" class="table-of-contents__link toc-highlight">Next Steps</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 eelDev AB</div></div></div></footer></div>
 </body>
 </html>
