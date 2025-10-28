@@ -52,6 +52,11 @@ const sidebars = {
      type: 'doc',
       id: 'logging'
     },
+        {
+      type: 'link',
+      label: 'Video Demonstration',
+      href: 'https://youtu.be/eDG3EeFrllQ',
+    },
   ],
 };
 
